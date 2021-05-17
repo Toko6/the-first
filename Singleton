@@ -1,0 +1,27 @@
+class world_championship_final:
+    __instance = None #set up the instance to none to have lets say empty
+    
+  
+
+#creating the finalist of championship and we will check if instance = None
+    def __new__(cls, team, ranking):
+        
+        #here we check if instance is none and if yes we will create the one
+        if cls.__instance is None:
+            cls.__instance = object.__new__(cls) 
+
+        cls.__instance.team = team
+        cls.__instance.ranking = ranking
+        return cls.__instance
+
+    
+    
+
+# here is the just a calling function 
+    def __call__(cls, *args, **kwargs):
+        print(f"The lats finalist is {cls.__instance.team} with the world rank {cls.__instance.ranking}")
+    
+        
+#passing the attributes and calling the function
+last_finalist = world_championship_final("Angola", 25)
+last_finalist()
